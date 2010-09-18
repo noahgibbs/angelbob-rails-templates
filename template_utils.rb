@@ -21,3 +21,9 @@ def get_and_install_tarball(uri, dirname, filename)
   raise "Couldn't build #{filename}(#{dirname})!" unless File.exist?(filename)
   run "sudo make install"
 end
+
+def install_npm_unless_present(package, uri = nil)
+  if `npm ls installed | grep #{package}`.empty?
+    run "npm install #{uri | package}"
+  end
+end

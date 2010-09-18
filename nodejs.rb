@@ -9,5 +9,6 @@ install_unless_present("npm") {
   run "curl http://npmjs.org/install.sh | sudo sh"
 }
 
-run "sudo npm install socket.io"
-run "sudo npm install http://github.com/cloudhead/node-static/tarball/master"
+install_npm_unless_present("socket.io")
+install_npm_unless_present("node-static",
+                      "http://github.com/cloudhead/node-static/tarball/master")
